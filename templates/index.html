@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GeoPrompt: LLM to Google Maps</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/static/script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 16px;
+    }
+
+    #send {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #fffbdd;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    ul#map-links {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    ul#map-links li {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>GeoPrompt: AI → Lat/Lng → Google Maps</h1>
+
+  <textarea id="prompt" rows="4"></textarea><br>
+  <button id="send">Ask</button>
+
+  <div id="loading">⏳ Loading... please wait while Ollama processes your prompt.</div>
+
+  <h2>Lat/Lng JSON Result:</h2>
+  <pre id="result"></pre>
+
+  <h2>Map Preview:</h2>
+  <div id="map"></div>
+
+  <h2>Open in Google Maps:</h2>
+  <ul id="map-links"></ul>
+
+  <!-- Replace YOUR_API_KEY with your real Google Maps JavaScript API key -->
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key={{.ApiKey}}&callback=initMap">
+</script>
+
+</body>
+</html>
